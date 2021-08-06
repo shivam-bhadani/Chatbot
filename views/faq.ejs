@@ -1,0 +1,35 @@
+<%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" href="css/faq.css">
+    <title>Chatbot - FAQs</title>
+    </head>
+
+    <body>
+
+        <%- include('./partials/navbar.ejs') %>
+
+            <div class="faq-page-container">
+
+                <% faqs.forEach(faq=> { %>
+                    <div class="individual-faq-container">
+                        <div class="individual-faq-question">
+                            <div>
+                                <%= faq.question %>
+                            </div>
+                            <div class="arrow">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="individual-faq-answer">
+                            <%= faq.answer %>
+                        </div>
+                    </div>
+                    <% }) %>
+
+            </div>
+
+            <script src="js/faq.js"></script>
+            <script src="js/navbar.js"></script>
+
+    </body>
+
+    </html>

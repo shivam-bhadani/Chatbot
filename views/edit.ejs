@@ -1,0 +1,52 @@
+<%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" href="../../../css/edit.css">
+    <title>Chatbot - Add Question</title>
+
+    <body>
+
+        <nav class="navbar">
+            <div class="website-name"><a href="/">Chatbot</a></div>
+
+            <span class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </span>
+
+            <div class="nav-links">
+                <ul class="navul">
+                    <li><a href="/faqs">FAQs</a></li>
+                    <li><a href="/">Ask Yourself</a></li>
+                    <li><a href="/admin/add-question">Add Question</a></li>
+                    <li><a href="/admin/all-questions">All Questions</a></li>
+                    <li>
+                        <form action="/admin/logout?_method=DELETE" method="POST" class="logout-form"><button
+                                type="submit">Logout</button></form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="page-container">
+            <h2>EDIT PAGE</h2>
+            <form action="/admin/<%= type %>/<%= message._id %>?_method=PUT" class="question-form" method="POST">
+                <div class="question-group">
+                    <label for="chat-question">Question:</label><br>
+                    <textarea name="question" id="chat-question" cols="30" rows="4" class="textarea"
+                        required><%= message.question %></textarea>
+                </div>
+                <div class="question-group">
+                    <label for="chat-answer">Answer:</label><br>
+                    <textarea name="answer" id="chat-answer" cols="30" rows="4" class="textarea"
+                        required><%= message.answer %></textarea>
+                </div>
+                <div class="question-group">
+                    <button type="submit" class="btn">EDIT</button>
+                </div>
+            </form>
+        </div>
+
+        <script src="../../../css/navbar.css"></script>
+    </body>
+
+    </html>

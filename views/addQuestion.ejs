@@ -1,0 +1,112 @@
+<%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" href="../css/addquestion.css">
+    <title>Chatbot - Add Question</title>
+
+    <body>
+
+        <nav class="navbar">
+            <div class="website-name"><a href="/">Chatbot</a></div>
+
+            <span class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </span>
+
+            <div class="nav-links">
+                <ul class="navul">
+                    <li><a href="/faqs">FAQs</a></li>
+                    <li><a href="/">Ask Yourself</a></li>
+                    <li><a href="/admin/add-question">Add Question</a></li>
+                    <li><a href="/admin/all-questions">All Questions</a></li>
+                    <li>
+                        <form action="/admin/logout?_method=DELETE" method="POST" class="logout-form"><button
+                                type="submit">Logout</button></form>
+                    </li>
+                    <li class="search-list">
+                        <form action="/" class="seach-form" method="GET" onsubmit="return searchValidate()">
+                            <input type="text" placeholder="Search FAQ..." class="search-input" name="search"
+                                id="search">
+                            <button type="submit" class="search-btn">Search</button>
+                        </form>
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="page-container">
+
+            <h2>Add Buttons Chat</h2>
+            <form action="/admin/add-button" class="question-form" method="POST">
+                <div class="question-group">
+                    <label for="title">Title:</label><br>
+                    <input name="title" id="title-question" class="textarea" value="<%= button.title %>" required>
+                </div>
+                <!-- <div class="subtitle-btn-container">
+                    <button class="subtitle-btn">subtitle</button>
+                </div> -->
+                <div class="question-group">
+                    <label for="btn-subtitle">Subtitle:</label><br>
+                    <input name="subtitle" id="btn-subtitle" class="textarea" required>
+                </div>
+                <div class="question-group">
+                    <label for="btn-answer">Answer:</label><br>
+                    <textarea name="answer" id="faq-answer" cols="30" rows="4" class="textarea" required></textarea>
+                </div>
+                <div class="question-group">
+                    <button type="submit" class="btn">ADD</button>
+                </div>
+            </form>
+
+            <h2>Add Chats</h2>
+            <form action="/admin/chat" class="question-form" method="POST">
+                <div class="question-group">
+                    <label for="chat-question">Question:</label><br>
+                    <textarea name="question" id="chat-question" cols="30" rows="4" class="textarea"
+                        required></textarea>
+                </div>
+                <div class="question-group">
+                    <label for="chat-answer">Answer:</label><br>
+                    <textarea name="answer" id="chat-answer" cols="30" rows="4" class="textarea" required></textarea>
+                </div>
+                <div class="question-group">
+                    <button type="submit" class="btn">ADD</button>
+                </div>
+            </form>
+
+            <h2>Add FAQs</h2>
+            <form action="/admin/faq" class="question-form" method="POST">
+                <div class="question-group">
+                    <label for="faq-question">Question:</label><br>
+                    <textarea name="question" id="faq-question" cols="30" rows="4" class="textarea" required></textarea>
+                </div>
+                <div class="question-group">
+                    <label for="faq-answer">Answer:</label><br>
+                    <textarea name="answer" id="faq-answer" cols="30" rows="4" class="textarea" required></textarea>
+                </div>
+                <div class="question-group">
+                    <button type="submit" class="btn">ADD</button>
+                </div>
+            </form>
+
+        </div>
+
+        <script>
+            function searchValidate() {
+                let search = document.getElementById('search').value.trim();
+                if (search == "") {
+                    alert("Please enter any text")
+                    return false;
+                }
+                else {
+                    return true;
+                }
+
+            }
+        </script>
+
+        <script src="../js/navbar.js"></script>
+    </body>
+
+    </html>

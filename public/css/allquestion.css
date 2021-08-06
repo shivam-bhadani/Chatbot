@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f2f2f2;
+    font-family: 'Roboto', sans-serif;
+}
+
+.page-container{
+    width: 1200px;
+    max-width: 95%;
+    margin: auto;
+    margin-top: 85px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-container, .faq-container, .button-container {
+    width: 32.4%;
+    background-color: #fff;
+    padding: 30px;
+    height: fit-content;
+}
+
+.individual-question-container{
+    border-top: 1px solid rgb(204, 197, 197);
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(236, 232, 232);
+    /* margin-bottom: 20px; */
+}
+
+.individual-question-container p{
+    padding-top: 10px;
+}
+
+h2{
+    margin-bottom: 20px;
+}
+
+.delete-form{
+    display: inline;
+}
+
+.btn{
+    margin-top: 15px;
+    margin-right: 15px;
+    padding: 6px 13px;
+    background-color: #2287f3;
+    border: none;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    transition: background-color 0.3s;
+}
+.btn:hover{
+    cursor: pointer;
+}
+.btn-delete{
+    background-color: rgb(245, 71, 71);
+}
+
+.btn-delete:hover{
+    background-color: rgb(192, 11, 11);
+}
+
+.btn-edit{
+    background-color: rgb(241, 162, 13);
+}
+.btn-edit:hover{
+    background-color: rgb(212, 140, 7);
+}
+
+
+@media(max-width: 768px){
+    .page-container{
+        display: block;
+    }
+    .chat-container, .faq-container, .button-container{
+        width: 100%;
+    }
+    .faq-container, .button-container{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+}

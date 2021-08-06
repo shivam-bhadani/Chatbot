@@ -1,0 +1,57 @@
+<%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" href="css/chat.css">
+    <title>Chatbot - Ask Yourself</title>
+    </head>
+
+    <body>
+
+        <%- include('./partials/navbar.ejs') %>
+
+            <!-- <div class="robot"><img src="images/robot.png" alt="robot" id="robotImg"></div> -->
+
+            <section class="chat_section">
+                <div class="brand">
+                    <h1>Hi! I am robot</h1>
+                    <!-- <div class="cross">&#10006;</div> -->
+                </div>
+                <div class="message_area">
+
+                    <div class="btn-container">
+                        <% buttons.forEach(button=> { %>
+
+                            <button class="incomming-btn" onclick="btnClick('<%= button.id %>', '<%= button.title %>')">
+                                <%= button.title %>
+                            </button>
+
+                            <% }) %>
+                    </div>
+
+                </div>
+                <div class="input-container">
+                    <input type="text" id="textarea" placeholder="Write a Query...">
+                    <div><img src="images/send.png" alt="send-icon" id="send"></div>
+                </div>
+            </section>
+
+
+            <script src="/socket.io/socket.io.js"></script>
+            <script src="js/client.js"></script>
+            <script src="js/navbar.js"></script>
+
+            <!-- <script>
+                let cross = document.getElementsByClassName('cross')[0];
+                let robitDiv = document.getElementsByClassName('robot')[0];
+                let chatSection = document.getElementsByClassName('chat_section')[0];
+                let robotImg = document.getElementById('robotImg');
+                robotImg.addEventListener('click', () => {
+                    robitDiv.classList.add('hide')
+                    chatSection.classList.add('display');
+                })
+                cross.addEventListener('click', () => {
+                    robitDiv.classList.remove('hide');
+                    chatSection.classList.remove('display');
+                })
+            </script> -->
+    </body>
+
+    </html>

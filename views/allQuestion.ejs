@@ -1,0 +1,112 @@
+<%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" href="../css/allquestion.css">
+    <title>Chatbot - All Questions</title>
+
+    <body>
+
+        <nav class="navbar">
+            <div class="website-name"><a href="/">Chatbot</a></div>
+
+            <span class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </span>
+
+            <div class="nav-links">
+                <ul class="navul">
+                    <li><a href="/faqs">FAQs</a></li>
+                    <li><a href="/">Ask Yourself</a></li>
+                    <li><a href="/admin/add-question">Add Question</a></li>
+                    <li><a href="/admin/all-questions">All Questions</a></li>
+                    <li>
+                        <form action="/admin/logout?_method=DELETE" method="POST" class="logout-form"><button
+                                type="submit">Logout</button></form>
+                    </li>
+                    <li class="search-list">
+                        <form action="/" class="seach-form" method="GET" onsubmit="return searchValidate()">
+                            <input type="text" placeholder="Search FAQ" class="search-input" name="search" id="search">
+                            <button type="submit" class="search-btn">Search</button>
+                        </form>
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="page-container">
+            <div class="chat-container">
+                <h2>Chat Questions</h2>
+                <% chats.forEach(chat=> { %>
+                    <div class="individual-question-container">
+                        <p>
+                            <%= chat.question %>
+                        </p>
+                        <a href="/admin/chat/edit/<%= chat.id %>"><button class="btn btn-edit">
+                                Edit
+                            </button></a>
+                        <form action="/admin/chat/<%= chat.id %>?_method=DELETE" method="POST" class="delete-form"
+                            onsubmit="return deleteConfirm()">
+                            <button class="btn btn-delete">Delete</button>
+                        </form>
+                    </div>
+                    <% }) %>
+            </div>
+
+            <div class="button-container">
+                <h2>Buttons Questions</h2>
+                <% buttons.forEach(button=> { %>
+                    <div class="individual-question-container">
+                        <p>
+                            <%= button.title %>
+                        </p>
+                        <form action="/admin/button/<%= button.id %>?_method=DELETE" method="POST" class="delete-form"
+                            onsubmit="return deleteConfirm()">
+                            <button class="btn btn-delete">Delete</button>
+                        </form>
+                    </div>
+                    <% }) %>
+            </div>
+
+            <div class="faq-container">
+                <h2>FAQ Questions</h2>
+                <% faqs.forEach(faq=> { %>
+                    <div class="individual-question-container">
+                        <p>
+                            <%= faq.question %>
+                        </p>
+                        <a href="/admin/faq/edit/<%= faq.id %>"><button class="btn btn-edit">Edit</button></a>
+                        <form action="/admin/faq/<%= faq.id %>?_method=DELETE" method="POST" class="delete-form"
+                            onsubmit="return deleteConfirm()">
+                            <button class="btn btn-delete">Delete</button>
+                        </form>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+
+
+        <script>
+            function searchValidate() {
+                let search = document.getElementById('search').value.trim();
+                if (search == "") {
+                    alert("Please enter any text")
+                    return false;
+                }
+                else {
+                    return true;
+                }
+
+            }
+        </script>
+
+        <script>
+            function deleteConfirm() {
+                let permition = confirm("Are you Sure you want to delete this")
+                if (permition) return true;
+                else return false;
+            }
+        </script>
+
+        <script src="../js/navbar.js"></script>
+    </body>

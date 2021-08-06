@@ -1,0 +1,36 @@
+<nav class="navbar">
+    <div class="website-name"><a href="/">Chatbot</a></div>
+
+    <span class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </span>
+
+    <div class="nav-links">
+        <ul class="navul">
+            <li><a href="/faqs">FAQs</a></li>
+            <li><a href="/">Ask Yourself</a></li>
+            <li class="search-list">
+                <form action="/" class="seach-form" method="GET" onsubmit="return searchValidate()">
+                    <input type="text" placeholder="Search FAQ..." class="search-input" name="search" id="search">
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<script>
+    function searchValidate() {
+        let search = document.getElementById('search').value.trim();
+        if (search == "") {
+            alert("Please enter any text")
+            return false;
+        }
+        else {
+            return true;
+        }
+
+    }
+</script>
